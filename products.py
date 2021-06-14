@@ -1,15 +1,21 @@
-# 讀取檔案
-products = []
-with open('products.csv', 'r', encoding = 'utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue            # continue 跟 break 依樣只能寫在迴圈裡,continue 是跳到下一迴的意思
-		name, price = line.strip().split(',') # split 切割完的結果是清單
-		# 縮寫 s = line.strip().split(',')  s 為清單
-		# 縮寫 name = s[0]
-		# 縮寫 price = s[1] 
-		products.append([name, price]) #將小清單 [name, price] 裝入大清單 products
-print(products)	
+#檢查檔案在不在,如果在,就讀取
+import os # operating system 作業系統
+
+products = [] # 不管有沒有讀到檔案,都必須要有空清單,因為等一下會用到
+if os.path.isfile('products.csv'):  #相同資料夾下，有無 'products.csv' 檔案
+	print('yeah! 找到檔案了!')
+	with open('products.csv', 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue            # continue 跟 break 依樣只能寫在迴圈裡,continue 是跳到下一迴的意思
+			name, price = line.strip().split(',') # split 切割完的結果是清單
+			# 縮寫 s = line.strip().split(',')  s 為清單
+			# 縮寫 name = s[0]
+			# 縮寫 price = s[1] 
+			products.append([name, price]) #將小清單 [name, price] 裝入大清單 products
+		print(products)	
+else:
+	print('找不到檔案...')
 
 #讓使用者輸入
 while True:
