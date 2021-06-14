@@ -1,4 +1,20 @@
 products = []
+
+with open('products.csv', 'r', encoding = 'utf-8') as f:
+	for line in f:
+		if '商品,價格' in line:
+			continue            # continue 跟 break 依樣只能寫在迴圈裡,continue 是跳到下一迴的意思
+		name, price = line.strip().split(',') # split 切割完的結果是清單
+		# 縮寫 s = line.strip().split(',')  s 為清單
+		# 縮寫 name = s[0]
+		# 縮寫 price = s[1] 
+		products.append([name, price]) #將小清單 [name, price] 裝入大清單 products
+print(products)	
+
+
+
+
+
 while True:
 	 name = input('請輸入商品名稱: ')
 	 if name == 'q':
