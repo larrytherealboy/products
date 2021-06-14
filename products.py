@@ -1,5 +1,5 @@
+# 讀取檔案
 products = []
-
 with open('products.csv', 'r', encoding = 'utf-8') as f:
 	for line in f:
 		if '商品,價格' in line:
@@ -11,10 +11,7 @@ with open('products.csv', 'r', encoding = 'utf-8') as f:
 		products.append([name, price]) #將小清單 [name, price] 裝入大清單 products
 print(products)	
 
-
-
-
-
+#讓使用者輸入
 while True:
 	 name = input('請輸入商品名稱: ')
 	 if name == 'q':
@@ -27,12 +24,13 @@ while True:
 	 products.append([name, price]) # products 為大清單
 print(products)
 
+#印出購買紀錄
 for p in products:
 	print(p[0],'的價格是', p[1])
 
-# 'abc' + '123' = 'abc123'
-# 'abc' * 3 = 'abcabcabc'
 
+
+#寫入檔案
 # read 'r' 讀取模式
 # write 'w' 寫入模式
 with open('products.csv', 'w', encoding = 'utf-8') as f:  # 寫入檔案時加入 encoding = 'utf-8' 解決中文亂碼問題
